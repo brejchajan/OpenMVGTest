@@ -1,5 +1,3 @@
-#define EIGEN_MALLOC_ALREADY_ALIGNED 0
-#define EIGEN_MAX_ALIGN_BYTES 32
 #include "sfm/sfm_data.hpp"
 #include "sfm/sfm_data_io.hpp"
 
