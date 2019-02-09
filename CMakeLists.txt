@@ -7,17 +7,17 @@ project(openMVGTest)
 
 set(EXECUTABLE_NAME ${PROJECT_NAME})
 
-find_package(Eigen3 REQUIRED)
+#find_package(Eigen3 REQUIRED)
 
-if (EIGEN_INCLUDE_DIR_HINTS)
-        include_directories(${EIGEN_INCLUDE_DIR_HINTS})
-else()
-        if (NOT EIGEN3_FOUND)
-                message(SEND_ERROR "EIGEN3 NOT FOUND")
-        else()
-                include_directories(${EIGEN3_INCLUDE_DIR})
-        endif()
-endif()
+#if (EIGEN_INCLUDE_DIR_HINTS)
+#        include_directories(${EIGEN_INCLUDE_DIR_HINTS})
+#else()
+#        if (NOT EIGEN3_FOUND)
+#                message(SEND_ERROR "EIGEN3 NOT FOUND")
+#        else()
+#                include_directories(${EIGEN3_INCLUDE_DIR})
+#        endif()
+#endif()
 
 find_package(OpenMVG REQUIRED)
 
