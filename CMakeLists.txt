@@ -1,9 +1,19 @@
 # Converting of NVM (N-View match) to OpenMVG binary format
 # must be separate because it uses GNU/GPL license which is not aplicable to
 # adobetrips_viewer code.
+cmake_minimum_required(VERSION 3.13)
+project(openMVGTest C CXX)
 
-project(openMVGTest)
+MACRO(register_definitions DEF)
+  add_definitions(${DEF})
+  string(REPLACE "-D" "" STRIPPED_DEF ${DEF})
+  list(APPEND OpenMVG_DEFINITIONS ${STRIPPED_DEF})
+ENDMACRO()
 
+if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  message("clang detected: using std::unordered_map for Hash_Map")
+  register_definitions(-DOPENMVG_STD_UNORDERED_MAP)
+endif()
 
 set(EXECUTABLE_NAME ${PROJECT_NAME})
 
@@ -16,5 +26,6 @@ MESSAGE("OpenMVG includes: " ${OPENMVG_INCLUDE_DIRS})
 add_executable(${EXECUTABLE_NAME} main.cpp)
 
 target_link_libraries(${EXECUTABLE_NAME}
-    PRIVATE
-    OpenMVG::openMVG_sfm)
+	OpenMVG::openMVG_sfm
+	${STLPLUS_LIBRARY}
+)
